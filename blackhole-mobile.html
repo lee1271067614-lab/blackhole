@@ -69,7 +69,7 @@ let pitch = Q.has('pitch') ? parseFloat(Q.get('pitch')) : 0.24;
 let dist = Q.has('dist') ? parseFloat(Q.get('dist')) : 38.0;
 let exposure = Q.has('exp') ? parseFloat(Q.get('exp')) : 0.52;
 if(MOBILE){
-  if(!Q.has('dist'))  dist = 62.0;    // 竖屏水平视角仅 ~20deg, 拉到 62 才让盘完整入框
+  if(!Q.has('dist'))  dist = 50.0;    // 竖屏取景更饱满：黑洞占满屏、主要结构完整，又不裁掉盘
   if(!Q.has('pitch')) pitch = 0.30;
   if(!Q.has('exp'))   exposure = 0.50;
 }
