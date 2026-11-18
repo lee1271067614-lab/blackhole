@@ -69,7 +69,7 @@ let pitch = Q.has('pitch') ? parseFloat(Q.get('pitch')) : 0.24;
 let dist = Q.has('dist') ? parseFloat(Q.get('dist')) : 38.0;
 let exposure = Q.has('exp') ? parseFloat(Q.get('exp')) : 0.52;
 if(MOBILE){
-  if(!Q.has('dist'))  dist = 50.0;    // 竖屏取景更饱满：黑洞占满屏、主要结构完整，又不裁掉盘
+  if(!Q.has('dist'))  dist = 44.0;    // 竖屏出血构图：黑洞主体铺满屏、临场感强，左右盘缘略出血
   if(!Q.has('pitch')) pitch = 0.30;
   if(!Q.has('exp'))   exposure = 0.50;
 }
