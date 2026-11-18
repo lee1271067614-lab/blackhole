@@ -43,7 +43,7 @@
   var m = (window.matchMedia && matchMedia('(pointer:coarse)').matches) || window.innerWidth < 820;
   document.getElementById(m ? 'mob' : 'desk').classList.add('primary');
   document.getElementById(m ? 'desk' : 'mob').classList.remove('primary');
-  var target = m ? 'blackhole-mobile.html' : 'blackhole-raytrace.html';
+  var target = m ? 'blackhole-mobile.html?v=44' : 'blackhole-raytrace.html?v=44';
   setTimeout(function(){ location.replace(target); }, 550);
 })();
 </script>
