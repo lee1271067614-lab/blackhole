@@ -51,6 +51,15 @@ let yaw = Q.has('yaw') ? parseFloat(Q.get('yaw')) : 0.62;
 let pitch = Q.has('pitch') ? parseFloat(Q.get('pitch')) : 0.24;
 let dist = Q.has('dist') ? parseFloat(Q.get('dist')) : 38.0;
 let exposure = Q.has('exp') ? parseFloat(Q.get('exp')) : 0.50;
+// 窄屏/触屏兜底取景：手机上即便打开的是桌面版，也能看到饱满的大黑洞
+const _narrow = (typeof matchMedia!=='undefined' && matchMedia('(pointer:coarse)').matches)
+  || /Mobi|Android|iPhone|iPad|iPod|HarmonyOS|Mobile/i.test(navigator.userAgent)
+  || (window.innerWidth < 820);
+if(_narrow){
+  if(!Q.has('dist')) dist = 44.0;
+  if(!Q.has('pitch')) pitch = 0.30;
+  if(!Q.has('exp')) exposure = 0.48;
+}
 const FIXED_T = Q.has('t') ? parseFloat(Q.get('t')) : null;
 const t0 = performance.now();
 const fpsEl = document.getElementById('fps');
