@@ -69,9 +69,9 @@ let pitch = Q.has('pitch') ? parseFloat(Q.get('pitch')) : 0.24;
 let dist = Q.has('dist') ? parseFloat(Q.get('dist')) : 38.0;
 let exposure = Q.has('exp') ? parseFloat(Q.get('exp')) : 0.52;
 if(MOBILE){
-  if(!Q.has('dist'))  dist = 46.0;    // 竖屏拉远, 让吸积盘完整入框
+  if(!Q.has('dist'))  dist = 62.0;    // 竖屏水平视角仅 ~20deg, 拉到 62 才让盘完整入框
   if(!Q.has('pitch')) pitch = 0.30;
-  if(!Q.has('exp'))   exposure = 0.56;
+  if(!Q.has('exp'))   exposure = 0.50;
 }
 const FIXED_T = Q.has('t') ? parseFloat(Q.get('t')) : null;
 const t0 = performance.now();
@@ -136,19 +136,6 @@ vec3 blackbody(float T){
   else { b = 138.5177312231 * log(t-10.0) - 305.0447927307; }
   vec3 srgb = clamp(vec3(r,g,b)/255.0, 0.0, 1.0);
   return pow(srgb, vec3(2.2));           // sRGB -> 线性
-}
-
-// ---- 旧色调坡 (保留备用) 温度 t: 0 冷 -> 1 热 ----
-vec3 diskColor(float t){
-  // 深红 -> 橙 -> 暖白 -> 微微蓝白
-  vec3 c0=vec3(0.42,0.09,0.015);
-  vec3 c1=vec3(1.00,0.42,0.10);
-  vec3 c2=vec3(1.00,0.80,0.52);
-  vec3 c3=vec3(1.00,0.97,0.90);
-  vec3 col = mix(c0,c1, smoothstep(0.0,0.42,t));
-  col = mix(col,c2, smoothstep(0.42,0.80,t));
-  col = mix(col,c3, smoothstep(0.80,1.0,t));
-  return col;
 }
 
 // ---- 星空背景 (方向 -> 贴图) ----
