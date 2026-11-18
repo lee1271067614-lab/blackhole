@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>卡冈图雅 · 黑洞</title>
+<style>
+  html,body{margin:0;height:100%;background:#04050a;overflow:hidden;
+    -webkit-tap-highlight-color:transparent;}
+  body{display:flex;align-items:center;justify-content:center;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    color:#c8ccd6;}
+  .wrap{text-align:center;transform:translateY(-4vh);}
+  .orb{width:96px;height:96px;margin:0 auto 26px;border-radius:50%;
+    background:radial-gradient(circle at 50% 50%, #000 32%, rgba(255,170,90,.55) 46%, rgba(255,120,40,.12) 60%, transparent 72%);
+    box-shadow:0 0 40px rgba(255,140,60,.18), 0 0 90px rgba(120,150,255,.10);
+    animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.92}50%{transform:scale(1.06);opacity:1}}
+  h1{font-size:19px;font-weight:500;letter-spacing:.28em;margin:0 0 8px;color:#e6e9f0;}
+  .sub{font-size:12px;letter-spacing:.22em;color:#6b7280;margin:0 0 30px;text-transform:uppercase;}
+  .pick{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  a.btn{display:inline-block;padding:11px 22px;border-radius:999px;font-size:14px;
+    text-decoration:none;color:#dfe3ec;border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.03);transition:.2s;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}
+  a.btn:hover{border-color:rgba(255,180,110,.6);color:#fff;background:rgba(255,150,70,.08);}
+  a.btn.primary{border-color:rgba(255,180,110,.45);color:#ffd9b0;}
+  .hint{margin-top:28px;font-size:11px;color:#4a5060;letter-spacing:.12em;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="orb"></div>
+    <h1>卡冈图雅</h1>
+    <p class="sub">Gargantua · Real-time Black Hole</p>
+    <div class="pick">
+      <a class="btn primary" id="desk" href="blackhole-raytrace.html">桌面版 · 全画质</a>
+      <a class="btn" id="mob" href="blackhole-mobile.html">手机版 · 触屏</a>
+    </div>
+    <p class="hint">正在进入…</p>
+  </div>
+<script>
+(function(){
+  var m = (window.matchMedia && matchMedia('(pointer:coarse)').matches) || window.innerWidth < 820;
+  document.getElementById(m ? 'mob' : 'desk').classList.add('primary');
+  document.getElementById(m ? 'desk' : 'mob').classList.remove('primary');
+  var target = m ? 'blackhole-mobile.html' : 'blackhole-raytrace.html';
+  setTimeout(function(){ location.replace(target); }, 550);
+})();
+</script>
+</body>
+</html>
