@@ -62,7 +62,7 @@ if(Q.has('clean')){
   const _t=document.getElementById('title'), _h=document.getElementById('hint');
   if(_t) _t.style.display='none'; if(_h) _h.style.display='none';
 }
-const MOBILE = (typeof matchMedia!=='undefined' && matchMedia('(pointer:coarse)').matches) || (window.innerWidth < 820);
+const MOBILE = (typeof matchMedia!=='undefined' && matchMedia('(pointer:coarse)').matches) || /Mobi|Android|iPhone|iPad|iPod|HarmonyOS|Mobile/i.test(navigator.userAgent) || (window.innerWidth < 820);
 const QUAL = Q.has('q') ? parseFloat(Q.get('q')) : (STILL ? 1.0 : (MOBILE ? 0.48 : 0.62));
 let yaw = Q.has('yaw') ? parseFloat(Q.get('yaw')) : 0.62;
 let pitch = Q.has('pitch') ? parseFloat(Q.get('pitch')) : 0.24;
