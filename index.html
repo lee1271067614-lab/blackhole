@@ -40,10 +40,10 @@
   </div>
 <script>
 (function(){
-  var m = (window.matchMedia && matchMedia('(pointer:coarse)').matches) || window.innerWidth < 820;
+  var m = (window.matchMedia && matchMedia('(pointer:coarse)').matches) || /Mobi|Android|iPhone|iPad|iPod|HarmonyOS|Mobile/i.test(navigator.userAgent) || window.innerWidth < 820;
   document.getElementById(m ? 'mob' : 'desk').classList.add('primary');
   document.getElementById(m ? 'desk' : 'mob').classList.remove('primary');
-  var target = m ? 'blackhole-mobile.html?v=44' : 'blackhole-raytrace.html?v=44';
+  var target = m ? 'blackhole-mobile.html?v=45' : 'blackhole-raytrace.html?v=45';
   setTimeout(function(){ location.replace(target); }, 550);
 })();
 </script>
